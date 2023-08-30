@@ -28,3 +28,16 @@ export type buttonVariantsTypes = {
     lg: string;
   };
 };
+
+// Type for query of API
+export type queryType = {
+  query: any;
+};
+
+// Types for searceSlice
+export interface searchType {
+  status: string;
+  loading: boolean;
+  data: never[];
+  error: string | null | undefined;
+}
