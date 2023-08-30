@@ -42,7 +42,7 @@ export interface searchType {
   error: string | null | undefined;
 }
 
-// autocomplate types
+// autocomplate types and resuls types
 export type resultsFetching = {
   results: Array<{
     adult: boolean;
