@@ -1,5 +1,5 @@
+import * as React from "react";
 import { ChildrenProps } from "@/src/utils/types";
-import React from "react";
 
 export default function HeadeContainer({ children }: ChildrenProps) {
   return (
