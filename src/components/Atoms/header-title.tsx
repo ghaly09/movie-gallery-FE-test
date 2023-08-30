@@ -1,15 +1,19 @@
+import * as React from "react";
 import { headerTitleProps } from "@/src/utils/types";
-import React from "react";
 
 export default function HeaderTitle({
   headertitle,
   description,
 }: headerTitleProps) {
   return (
-    <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl mb-4">
-      {headertitle}
-      <br className="hidden sm:inline" />
-      {description} <br /> Explore now.
-    </h1>
+    // Title and description for header with props headertitle and description
+    <div>
+      <h1 className="text-4xl font-extrabold leading-none md:leading-tight tracking-tighter md:text-[2.5rem] mb-2 md:mb-0">
+        {headertitle}
+      </h1>
+      <h2 className="text-2xl font-extrabold leading-1 md:leading-tight tracking-tighter md:text-4xl mb-4">
+        {description} <br /> Explore now.
+      </h2>
+    </div>
   );
 }
