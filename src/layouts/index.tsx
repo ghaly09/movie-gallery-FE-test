@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ChildrenProps } from "../utils/types";
 import Head from "next/head";
+import VectorBackground from "../components/Atoms/vectorBG";
 
 export default function Layout({ children }: ChildrenProps) {
   return (
@@ -16,6 +17,8 @@ export default function Layout({ children }: ChildrenProps) {
         <meta name="robots" content="index, follow" />
       </Head>
       <main>
+        {/* Background global */}
+        <VectorBackground />
         <div className="max-w-[68rem] mx-auto">
           <div>{children}</div>
         </div>
