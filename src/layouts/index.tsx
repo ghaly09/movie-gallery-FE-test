@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { ChildrenProps } from "../utils/types";
 import Head from "next/head";
 
