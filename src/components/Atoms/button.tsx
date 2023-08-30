@@ -26,7 +26,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, ...props }, ref) => {
     return (
       <button
-        // changeable className for button, use clsx for make it more easer to put variable or state
+        // changeable className, variant, size and props for button, use clsx for make it more easer to put variable or state
         className={clsx(
           variant,
           size,
