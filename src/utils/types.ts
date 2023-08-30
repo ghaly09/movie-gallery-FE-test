@@ -1,5 +1,7 @@
 // Types for all variables
 
+import { type } from "os";
+
 // Type for children component
 export interface ChildrenProps {
   children: React.ReactNode;
@@ -45,6 +47,7 @@ export interface searchType {
 // autocomplate types and resuls types
 export type resultsFetching = {
   results: Array<{
+    name: string;
     adult: boolean;
     backdrop_path: string;
     genre_ids: number[];
@@ -62,3 +65,7 @@ export type resultsFetching = {
   }>;
   value: string;
 };
+
+// export type cardTypes {
+
+// }
