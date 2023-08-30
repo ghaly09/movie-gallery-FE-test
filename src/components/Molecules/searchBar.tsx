@@ -13,9 +13,10 @@ import { resultsFetching } from "@/src/utils/types";
 export default function SearchBar() {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const { results }: resultsFetching = useSelector(
+  const { results }: Partial<resultsFetching> = useSelector(
     (state: any) => state.search?.data
   );
+  console.log(results);
   const [value, setValue] = React.useState<string>("");
   const [textPlaceholder, setTextPlaceholder] = React.useState<string>("");
 
@@ -38,7 +39,7 @@ export default function SearchBar() {
   const handleSearch = (value: any) => {
     dispatch(
       fetchDataSearch(
-        `search/movie?query=${value.toLowerCase()}&include_adult=false&language=en-US&page=1`
+        `search/keyword?query=${value.toLowerCase()}&include_adult=false&language=en-US&page=1`
       )
     );
   };
@@ -103,6 +104,7 @@ export default function SearchBar() {
         </Button>
       </div>
 
+      {/* Autocomplate comp*/}
       <AutoComplateContainer visible={visible} value={value}>
         {value == ""
           ? ""
@@ -112,16 +114,16 @@ export default function SearchBar() {
                 key={index}
                 onClick={() => {
                   setValue(""),
-                    setTextPlaceholder(result?.title),
+                    setTextPlaceholder(result?.name),
                     dispatch(
                       fetchDataSearch(
-                        `search/movie?query=${result?.title.toLowerCase()}&include_adult=false&language=en-US&page=1`
+                        `search/movie?query=${result?.name.toLowerCase()}&include_adult=false&language=en-US&page=1`
                       )
                     );
-                  router.push(`/${result?.title.toLowerCase()}`);
+                  router.push(`/${result?.name.toLowerCase()}`);
                 }}
               >
-                {result?.title}
+                {result?.name}
               </li>
             ))}
       </AutoComplateContainer>
