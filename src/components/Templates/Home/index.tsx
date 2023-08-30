@@ -1,7 +1,8 @@
+import * as React from "react";
 import { poppins } from "@/src/utils/fonts";
 import clsx from "clsx";
-import React from "react";
 import Header from "../../Organisms/Header";
+import { Input } from "../../Atoms/input";
 
 export default function Home() {
   return (
