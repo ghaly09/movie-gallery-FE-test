@@ -1,25 +1,24 @@
 import SkeletonDetail from "@/src/components/Atoms/SkeletonDetail";
 import { BadgeGenre } from "@/src/components/Molecules/badgeGenre";
 import CardMovie from "@/src/components/Molecules/cardMovie";
-import { fontSans, poppins } from "@/src/utils/fonts";
+import SearchBar from "@/src/components/Molecules/searchBar";
+import { fontSans } from "@/src/utils/fonts";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import * as React from "react";
-import { useSelector } from "react-redux";
 import { AiFillStar } from "react-icons/ai";
-import Header from "@/src/components/Organisms/Header";
-import clsx from "clsx";
-import SearchBar from "@/src/components/Molecules/searchBar";
+import { useSelector } from "react-redux";
 
 export default function Detail() {
   const router = useRouter();
   const { id } = router.query;
   const { data, loading, status } = useSelector((state: any) => state.detail);
-  console.log(status);
+
   React.useEffect(() => {
     if (loading === false) {
       data.length === 0 ? router.push(`/`) : "";
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const src = `${
@@ -32,7 +31,11 @@ export default function Detail() {
 
   return (
     <>
-      <SearchBar />
+      <div className="relavite px-3">
+        <div className="sticky top-0 z-50 w-full h-15 bg-white">
+          <SearchBar />
+        </div>
+      </div>
       <div className={`mt-32 mb-5 ${fontSans.className}`}>
         {loading === true ? (
           <SkeletonDetail />
