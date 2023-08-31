@@ -15,6 +15,7 @@ export interface InputProps
 export type headerTitleProps = {
   headertitle: string;
   description: string;
+  dataPopular: [];
 };
 
 // Types for button component
@@ -33,7 +34,7 @@ export type buttonVariantsTypes = {
 
 // Type for query of API
 export type queryType = {
-  query: any;
+  query: string;
 };
 
 // Types for searceSlice
@@ -42,6 +43,18 @@ export interface searchType {
   loading: boolean;
   data: never[];
   error: string | null | undefined;
+}
+
+export interface detailType {
+  status: string;
+  loading: boolean;
+  data: never[];
+  error: string | null | undefined;
+}
+// Types for favoriteSlice
+export interface favoriteType {
+  saved: object[];
+  total: number;
 }
 
 // autocomplate types and resuls types
@@ -64,6 +77,9 @@ export type resultsFetching = {
     vote_count: number;
   }>;
   value: string;
+  rating: any;
+  existingMovie: any;
+  save: any;
 };
 
 // export type cardTypes {
