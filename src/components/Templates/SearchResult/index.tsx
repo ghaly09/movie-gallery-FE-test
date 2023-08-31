@@ -25,7 +25,7 @@ export default function SearchResult({
         <Header headertitle={headertitle} description={description} />
 
         {loading === true ? (
-          <LoaderImage />
+          <LoaderImage className="sm:mt-32" />
         ) : data.length === 0 || data.results.length === 0 ? (
           <NotFround />
         ) : (

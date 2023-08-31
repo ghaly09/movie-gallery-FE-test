@@ -1,12 +1,9 @@
-// import { fetchDataDetail } from "@/redux/slices/slice-detail";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Rating from "../Atoms/rating";
-import FavoriteButton from "../Atoms/favorite-button";
 import { fetchDataDetail } from "@/src/stores/reducers/detailSlice";
 import { useAppDispatch } from "@/src/stores/store";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import FavoriteButton from "../Atoms/favorite-button";
+import Rating from "../Atoms/rating";
 
 interface CardPropsType {
   urlImage: string;
