@@ -2,6 +2,7 @@ import * as React from "react";
 import { Input } from "../Atoms/input";
 import { RiSearchEyeLine } from "react-icons/ri";
 import { GoHome } from "react-icons/go";
+import { MdFavorite } from "react-icons/md";
 import { Button, buttonVariants } from "../Atoms/button";
 import { useRouter } from "next/router";
 import { fetchDataSearch } from "@/src/stores/reducers/searchSlice";
@@ -53,7 +54,7 @@ export default function SearchBar() {
   };
 
   return (
-    <>
+    <nav className="w-full">
       <div className="flex w-full items-center space-x-2 mt-5">
         {/* earch bar input */}
         <Input
@@ -102,13 +103,27 @@ export default function SearchBar() {
         >
           <GoHome className="text-lg md:text-xl" />
         </Button>
+
+        {/* Button for Favorite */}
+        <Button
+          className="rounded-full py-1 px-[0.7rem]"
+          type="submit"
+          variant={buttonVariants.variant.default}
+          size={buttonVariants.size.default}
+          onClick={() => router.push(`/favorite`)}
+        >
+          <MdFavorite className="text-lg text-red-500 md:text-xl" />
+        </Button>
       </div>
 
-      {/* Autocomplate comp*/}
-      <AutoComplateContainer visible={visible} value={value}>
-        {value == ""
-          ? ""
-          : results?.map((result, index: number) => (
+      {/* Autocomplate comp */}
+
+      {value == "" ? (
+        ""
+      ) : (
+        <div className="relative w-full">
+          <AutoComplateContainer visible={visible} value={value}>
+            {results?.map((result, index: number) => (
               <li
                 className="cursor-pointer hover:bg-slate-400 hover:bg-opacity-30 rounded-sm p-1"
                 key={index}
@@ -126,7 +141,9 @@ export default function SearchBar() {
                 {result?.name}
               </li>
             ))}
-      </AutoComplateContainer>
-    </>
+          </AutoComplateContainer>
+        </div>
+      )}
+    </nav>
   );
 }
