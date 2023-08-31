@@ -39,7 +39,7 @@ export default function Favorites({
             </h3>
           </div>
         ) : (
-          <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-center gap-5 sm:mt-32">
+          <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-center gap-5 mt-16 sm:mt-32">
             {saved?.map((item: any) => (
               <CardMovie
                 urlImage={item.urlImage}
