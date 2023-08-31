@@ -1,8 +1,10 @@
-import React from "react";
-import SearchResult from "../components/Templates/SearchResult";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 
 export default function SearchPage() {
+  const SearchResult = dynamic(
+    () => import("../components/Templates/SearchResult")
+  );
   const router = useRouter();
   const { search } = router.query;
   return (
