@@ -1,4 +1,4 @@
-import SkeletonDetail from "@/src/components/Atoms/SkeletonDetail";
+import SkeletonDetail from "@/src/components/Atoms/skeletonDetail";
 import { BadgeGenre } from "@/src/components/Molecules/badgeGenre";
 import CardMovie from "@/src/components/Molecules/cardMovie";
 import SearchBar from "@/src/components/Molecules/searchBar";
@@ -65,10 +65,10 @@ export default function Detail() {
                 />
               </div>
             </div>
-            <div className="absolute bottom-[100px] md:top-[50px] left-10 right-10 md:right-0 md:left-[460px] font-bold text-3xl text-white">
+            <div className="absolute bottom-[40px] md:top-[50px] left-10 right-10 md:right-0 md:left-[460px] font-bold text-3xl text-white">
               {data?.title ?? data?.name}{" "}
               <span className="font-normal text-slate-200">({year})</span>
-              <div className="flex flex-row gap-1 mt-3">
+              <div className="flex flex-row overflow-hidden gap-1 mt-3">
                 <p className="text-lg font-light border-[1px] h-[28px] w-[29px] text-center ">
                   18
                 </p>
@@ -77,7 +77,7 @@ export default function Detail() {
                 ) : (
                   data?.genres.map((genre: { name: string }) => (
                     // eslint-disable-next-line react/jsx-key
-                    <BadgeGenre text={genre?.name} />
+                    <BadgeGenre className={""} text={genre?.name} />
                   ))
                 )}
               </div>
