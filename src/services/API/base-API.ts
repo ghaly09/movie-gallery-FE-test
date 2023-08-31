@@ -1,7 +1,6 @@
-import { queryType } from "@/src/utils/types";
 import baseURL from "./base-URL";
 
-const baseAPI = (query: queryType) => {
+const baseAPI = (query: any) => {
   return {
     method: "GET",
     url: baseURL(query),
