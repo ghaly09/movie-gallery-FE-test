@@ -1,12 +1,11 @@
 import { poppins } from "@/src/utils/fonts";
 import { headerTitleProps } from "@/src/utils/types";
 import clsx from "clsx";
-import Header from "../../Organisms/Header";
 import { useSelector } from "react-redux";
 import NotFround from "../../Atoms/notFround";
 import CardMovie from "../../Molecules/cardMovie";
 import LoaderImage from "../../Molecules/loaderImage";
-import { useRouter } from "next/router";
+import Header from "../../Organisms/Header";
 
 export default function SearchResult({
   headertitle,
