@@ -1,9 +1,13 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import searchReducer from "./reducers/searchSlice";
+import favoriteReducer from "./reducers/favoriteSlice";
+import detailReducer from "./reducers/detailSlice";
 
 const rootReducer = combineReducers({
   search: searchReducer,
+  favorite: favoriteReducer,
+  detail: detailReducer,
 });
 
 export const store = configureStore({
