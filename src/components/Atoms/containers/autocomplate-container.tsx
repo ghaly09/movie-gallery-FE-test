@@ -14,7 +14,7 @@ export default function AutoComplateContainer({
   return (
     <ul
       className={clsx(
-        "overflow-y-auto overscroll-y-auto h-80 w-full rounded-xl bg-transparent px-2 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:opacity-50",
+        "absolute overflow-y-auto overscroll-y-auto z-40 h-80 w-full bg-white bg-opacity-90 rounded-xl px-2 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:opacity-50",
         value != "" ? visible : ""
       )}
     >
