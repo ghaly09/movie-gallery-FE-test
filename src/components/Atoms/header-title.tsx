@@ -4,7 +4,7 @@ import { headerTitleProps } from "@/src/utils/types";
 export default function HeaderTitle({
   headertitle,
   description,
-}: headerTitleProps) {
+}: Partial<headerTitleProps>) {
   return (
     // Title and description for header with props headertitle and description
     <div>
