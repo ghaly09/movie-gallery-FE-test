@@ -45,7 +45,16 @@ export interface searchType {
   error: string | null | undefined;
 }
 
+// Types for detailSlice
 export interface detailType {
+  status: string;
+  loading: boolean;
+  data: never[];
+  error: string | null | undefined;
+}
+
+// Types for homeSlice
+export interface homeType {
   status: string;
   loading: boolean;
   data: never[];
@@ -55,6 +64,10 @@ export interface detailType {
 export interface favoriteType {
   saved: object[];
   total: number;
+}
+// Types for filterByYearSlice
+export interface filterByYearType {
+  year: string | number;
 }
 
 // autocomplate types and resuls types
@@ -82,6 +95,6 @@ export type resultsFetching = {
   save: any;
 };
 
-// export type cardTypes {
-
-// }
+export type classNameType = {
+  className: string;
+};
