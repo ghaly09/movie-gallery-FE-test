@@ -1,3 +1,4 @@
+import SEO from "@/src/components/Atoms/SEO/seo";
 import { BadgeGenre } from "@/src/components/Molecules/badgeGenre";
 import CardMovie from "@/src/components/Molecules/cardMovie";
 import { SkeletonDetail } from "@/src/components/Molecules/detailSkeleton";
@@ -11,7 +12,6 @@ import { useSelector } from "react-redux";
 
 export default function Detail() {
   const router = useRouter();
-  const { id } = router.query;
   const { data, loading, status } = useSelector((state: any) => state.detail);
 
   React.useEffect(() => {
@@ -31,6 +31,11 @@ export default function Detail() {
 
   return (
     <>
+      <SEO
+        siteTitle={`Movie Gallery | ${data?.title ?? data?.name}`}
+        siteDescription="Movie Gallery project for Frontend Developer Test"
+        authorName="Rachmat Ghaly"
+      />
       <div className="relavite px-3">
         <div className="sticky top-0 z-50 w-full h-15 bg-white">
           <SearchBar />
