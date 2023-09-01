@@ -1,3 +1,26 @@
+/**
+ * Button Component
+ *
+ * The Button component provides a customizable button element with various styles and sizes.
+ * It is designed to be a reusable component for creating buttons in your application.
+ *
+ * @component
+ * @param {object} props - The Button component props.
+ * @param {string} [props.className] - Additional CSS classes to apply to the button.
+ * @param {string} props.variant - The variant of the button (e.g., default, outline, secondary).
+ * @param {string} props.size - The size of the button (e.g., default, sm, lg).
+ * @param {...any} props.props - Any additional props you'd like to pass to the button element.
+ * @returns {JSX.Element} - Returns the Button component.
+ *
+ * @example
+ * // Basic usage:
+ * <Button variant="default" size="default">Click Me</Button>
+ *
+ * @example
+ * // Using additional CSS classes:
+ * <Button variant="outline" size="sm" className="custom-class">Click Me</Button>
+ */
+
 import * as React from "react";
 import clsx from "clsx";
 import { buttonVariantsTypes } from "@/src/utils/types";
