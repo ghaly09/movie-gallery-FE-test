@@ -1,4 +1,4 @@
-import SkeletonDetail from "@/src/components/Atoms/skeletonDetail";
+import DetailSkeleton from "@/src/components/Atoms/skeletonDetail";
 import { BadgeGenre } from "@/src/components/Molecules/badgeGenre";
 import CardMovie from "@/src/components/Molecules/cardMovie";
 import SearchBar from "@/src/components/Molecules/searchBar";
@@ -38,7 +38,7 @@ export default function Detail() {
       </div>
       <div className={`mt-20 sm:mt-32 mb-5 ${fontSans.className}`}>
         {loading === true ? (
-          <SkeletonDetail />
+          <DetailSkeleton />
         ) : (
           <div className="relative">
             <Image

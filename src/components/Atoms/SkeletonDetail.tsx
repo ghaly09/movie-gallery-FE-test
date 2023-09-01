@@ -1,6 +1,6 @@
 import { Skeleton } from "./skeleton";
 
-export default function SkeletonDetail() {
+export default function DetailSkeleton() {
   return (
     <div className="flex flex-col items-center space-x-4">
       <Skeleton className="lg:w-full w-60 md:h-[400px] lg:h-80 rounded-xl" />
