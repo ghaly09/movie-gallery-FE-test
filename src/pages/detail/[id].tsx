@@ -1,6 +1,6 @@
-import { DetailSkeleton } from "@/src/components/Atoms/skeletonDetail";
 import { BadgeGenre } from "@/src/components/Molecules/badgeGenre";
 import CardMovie from "@/src/components/Molecules/cardMovie";
+import { SkeletonDetail } from "@/src/components/Molecules/detailSkeleton";
 import SearchBar from "@/src/components/Molecules/searchBar";
 import { fontSans } from "@/src/utils/fonts";
 import Image from "next/image";
@@ -38,7 +38,7 @@ export default function Detail() {
       </div>
       <div className={`mt-20 sm:mt-32 mb-5 ${fontSans.className}`}>
         {loading === true ? (
-          <DetailSkeleton />
+          <SkeletonDetail />
         ) : (
           <div className="relative">
             <Image
