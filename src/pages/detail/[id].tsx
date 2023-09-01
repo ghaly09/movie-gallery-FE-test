@@ -1,4 +1,4 @@
-import DetailSkeleton from "@/src/components/Atoms/skeletonDetail";
+import { DetailSkeleton } from "@/src/components/Atoms/skeletonDetail";
 import { BadgeGenre } from "@/src/components/Molecules/badgeGenre";
 import CardMovie from "@/src/components/Molecules/cardMovie";
 import SearchBar from "@/src/components/Molecules/searchBar";
