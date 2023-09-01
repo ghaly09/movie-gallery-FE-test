@@ -14,15 +14,13 @@ import { resultsFetching } from "@/src/utils/types";
 export default function SearchBar() {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const { results }: Partial<resultsFetching> = useSelector(
-    (state: any) => state.search?.data
-  );
-  console.log(results);
+  const { data, loading } = useSelector((state: any) => state.search);
+
   const [value, setValue] = React.useState<string>("");
   const [textPlaceholder, setTextPlaceholder] = React.useState<string>("");
 
   let visible: string = "";
-  if (results !== undefined && results.length !== 0) {
+  if (data.results !== undefined && data.results.length !== 0) {
     visible = "border border-slate-200";
   }
   // debounce and AutoComplate for handle much fetch API
@@ -37,6 +35,7 @@ export default function SearchBar() {
     };
   };
 
+  // handle search for fetch data search
   const handleSearch = (value: any) => {
     dispatch(
       fetchDataSearch(
@@ -123,24 +122,28 @@ export default function SearchBar() {
       ) : (
         <div className="relative w-full">
           <AutoComplateContainer visible={visible} value={value}>
-            {results?.map((result, index: number) => (
-              <li
-                className="cursor-pointer hover:bg-slate-400 hover:bg-opacity-30 rounded-sm p-1"
-                key={index}
-                onClick={() => {
-                  setValue(""),
-                    setTextPlaceholder(result?.name),
-                    dispatch(
-                      fetchDataSearch(
-                        `search/movie?query=${result?.name.toLowerCase()}&include_adult=false&language=en-US&page=1`
-                      )
-                    );
-                  router.push(`/${result?.name.toLowerCase()}`);
-                }}
-              >
-                {result?.name}
-              </li>
-            ))}
+            {loading ? (
+              <li>Loading....</li>
+            ) : (
+              data.results?.map((result: any, index: number) => (
+                <li
+                  className="cursor-pointer hover:bg-slate-400 hover:bg-opacity-30 rounded-sm p-1"
+                  key={index}
+                  onClick={() => {
+                    setValue(""),
+                      setTextPlaceholder(result?.name),
+                      dispatch(
+                        fetchDataSearch(
+                          `search/movie?query=${result?.name.toLowerCase()}&include_adult=false&language=en-US&page=1`
+                        )
+                      );
+                    router.push(`/${result?.name.toLowerCase()}`);
+                  }}
+                >
+                  {result?.name}
+                </li>
+              ))
+            )}
           </AutoComplateContainer>
         </div>
       )}
