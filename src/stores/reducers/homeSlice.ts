@@ -25,6 +25,7 @@ export const fetchDataHome = createAsyncThunk(
 const initialState: homeType = {
   status: "idle",
   loading: false,
+  year: "",
   data: [],
   error: null,
 };
@@ -36,7 +37,11 @@ const homeSlice: Slice<
 > = createSlice({
   name: "home",
   initialState,
-  reducers: {},
+  reducers: {
+    FILTER_BY_YEAR: (state, action) => {
+      state.year = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchDataHome.pending, (state) => {
       state.status = "pending";
@@ -57,5 +62,7 @@ const homeSlice: Slice<
     });
   },
 });
+
+export const { FILTER_BY_YEAR } = homeSlice.actions;
 
 export default homeSlice.reducer;
