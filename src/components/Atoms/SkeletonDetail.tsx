@@ -1,8 +1,6 @@
 import { Skeleton } from "./skeleton";
 
-interface DetailSkeletonProps {}
-
-export const DetailSkeleton: React.FC<DetailSkeletonProps> = () => {
+export const DetailSkeleton = () => {
   return (
     <div className="flex flex-col items-center space-x-4">
       <Skeleton className="lg:w-full w-60 md:h-[400px] lg:h-80 rounded-xl" />
