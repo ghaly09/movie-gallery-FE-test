@@ -4,9 +4,13 @@ import SEO from "../components/Atoms/SEO/seo";
 import { useSelector } from "react-redux";
 import { favoriteType } from "../utils/types";
 
+interface stateFavorite extends favoriteType {
+  favorite: any;
+}
+
 export default function Favorite() {
   const Favorites = dynamic(() => import("../components/Templates/Favorites"));
-  const { total } = useSelector((state: favoriteType) => state.favorite);
+  const { total } = useSelector((state: stateFavorite) => state.favorite);
   return (
     <>
       <SEO

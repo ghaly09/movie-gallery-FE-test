@@ -63,7 +63,6 @@ export interface homeType {
 }
 // Types for favoriteSlice
 export interface favoriteType {
-  favorite: any;
   saved: object[];
   total: number;
 }
