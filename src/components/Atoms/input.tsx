@@ -3,11 +3,32 @@ import clsx from "clsx";
 import { InputProps } from "@/src/utils/types";
 
 // Input reusable component
+/**
+ * Input Component
+ *
+ * This is a reusable input component built using React for handling various input types.
+ * @component
+ * @param {object} props - The input component props.
+ * @param {string} [props.className] - Additional CSS classes to apply to the input.
+ * @param {string} props.type - The type of input (e.g., text, password, email).
+ * @param {...any} props.props - Any additional props you'd like to pass to the input element.
+ * @param {React.Ref<HTMLInputElement>} ref - A React ref to access the input element.
+ * @returns {JSX.Element} - Returns the input component.
+ *
+ * @example
+ * // Basic usage:
+ * <Input type="text" placeholder="Enter text" />
+ *
+ * @example
+ * // Using additional CSS classes:
+ * <Input type="password" className="custom-class" />
+ */
+
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
     return (
       <input
-        //   type for input data types
+        // type for input data types
         type={type}
         // changeable className for input, use clsx for make itu more easer to put variable or state
         className={clsx(
