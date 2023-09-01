@@ -36,7 +36,7 @@ export default function Detail() {
           <SearchBar />
         </div>
       </div>
-      <div className={`mt-32 mb-5 ${fontSans.className}`}>
+      <div className={`mt-20 sm:mt-32 mb-5 ${fontSans.className}`}>
         {loading === true ? (
           <SkeletonDetail />
         ) : (
