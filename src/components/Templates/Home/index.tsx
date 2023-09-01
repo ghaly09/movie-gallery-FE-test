@@ -8,12 +8,67 @@ import FilterBy from "../../Molecules/filter";
 import { useSelector } from "react-redux";
 import LoaderImage from "../../Molecules/loaderImage";
 import NotFround from "../../Atoms/notFround";
+import { useAppDispatch } from "@/src/stores/store";
+import { fetchDataHome } from "@/src/stores/reducers/homeSlice";
 
 export default function Home({
   headertitle,
   description,
 }: Partial<headerTitleProps>) {
-  const { data, loading } = useSelector((state: any) => state.home);
+  const dispatch = useAppDispatch();
+  const [page, setPage] = React.useState<number>(1);
+  const [items, setItems] = React.useState<any[]>([]);
+  const { data, loading, year } = useSelector((state: any) => state.home);
+
+  // handle Fetch movies
+  const fetchMovies = () => {
+    dispatch(
+      fetchDataHome(
+        `movie/popular?language=en-US&page=${page}&primary_release_year=${year}`
+      )
+    );
+    if (data.length != 0) {
+      setItems((prevItems) => [...prevItems, ...data.results]);
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  // Fetch movies
+  React.useEffect(() => {
+    dispatch(
+      fetchDataHome(
+        `movie/popular?language=en-US&page=1&primary_release_year=${year}`
+      )
+    );
+    // set items to empty for input other data based on year
+    setItems([]);
+    setPage((prevPage) => prevPage + 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [year]);
+
+  // // handle scroll in using infinite scroll
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop !==
+        document.documentElement.offsetHeight ||
+      loading
+    ) {
+      return;
+    }
+    {
+      fetchMovies();
+    }
+  };
+
+  // // detect scroll for calling handleScroll
+  React.useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading]);
+
   return (
     <section
       className={clsx(
@@ -26,24 +81,54 @@ export default function Home({
 
         <FilterBy className="mt-16 sm:mt-32" />
         {loading === true ? (
-          <LoaderImage className="" />
+          <>
+            <LoaderImage className="" />
+            <div className="inline-flex justify-center">
+              <p className="text-3xl font-bold text-center">🌀 Loading...</p>
+            </div>
+          </>
         ) : data.length === 0 || data.results.length === 0 ? (
           <NotFround />
         ) : (
           <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-center gap-5">
-            {data.results?.map((film: any) => (
-              <CardMovie
-                urlImage={`https://image.tmdb.org/t/p/w500${film?.poster_path}`}
-                title={film?.title}
-                year={film?.release_date}
-                rating={film?.vote_average}
-                id={film?.id}
-                type={film?.media_type}
-                key={film?.id}
-                saved={undefined}
-              />
-            ))}
-            F
+            {items.length == 0
+              ? data.results?.map((film: any) => (
+                  <CardMovie
+                    urlImage={`https://image.tmdb.org/t/p/w500${film?.poster_path}`}
+                    title={film?.title}
+                    year={film?.release_date}
+                    rating={film?.vote_average}
+                    id={film?.id}
+                    type={film?.media_type}
+                    key={film?.id}
+                    saved={undefined}
+                  />
+                ))
+              : year !== ""
+              ? items?.map((film: any) => (
+                  <CardMovie
+                    urlImage={`https://image.tmdb.org/t/p/w500${film?.poster_path}`}
+                    title={film?.title}
+                    year={film?.release_date}
+                    rating={film?.vote_average}
+                    id={film?.id}
+                    type={film?.media_type}
+                    key={film?.id}
+                    saved={undefined}
+                  />
+                ))
+              : data.results?.map((film: any) => (
+                  <CardMovie
+                    urlImage={`https://image.tmdb.org/t/p/w500${film?.poster_path}`}
+                    title={film?.title}
+                    year={film?.release_date}
+                    rating={film?.vote_average}
+                    id={film?.id}
+                    type={film?.media_type}
+                    key={film?.id}
+                    saved={undefined}
+                  />
+                ))}
           </div>
         )}
       </div>
