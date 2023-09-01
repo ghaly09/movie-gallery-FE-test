@@ -11,7 +11,7 @@ export default function LoaderImage({ className }: classNameType) {
         className
       )}
     >
-      {[0, 1, 2, 3, 4, 5, 6, 7].map((index) => (
+      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((index) => (
         <SkeletonLoader key={index} />
       ))}{" "}
     </div>
