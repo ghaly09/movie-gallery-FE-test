@@ -57,6 +57,7 @@ export interface detailType {
 export interface homeType {
   status: string;
   loading: boolean;
+  year: string | number;
   data: never[];
   error: string | null | undefined;
 }
