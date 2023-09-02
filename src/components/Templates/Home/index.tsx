@@ -28,7 +28,11 @@ export default function Home({
       )
     );
     if (data.length != 0) {
-      setItems((prevItems) => [...prevItems, ...data.results]);
+      setItems((prevItems: any) => {
+        return prevItems !== data.results
+          ? [...prevItems, ...data.results]
+          : [...prevItems];
+      });
       setPage((prevPage) => prevPage + 1);
     }
   };
@@ -40,9 +44,9 @@ export default function Home({
         `movie/popular?language=en-US&page=1&primary_release_year=${year}`
       )
     );
-    // set items to empty for input other data based on year
-    setItems([]);
+    // set page + 1 and set items to empty for input other data based on year
     setPage((prevPage) => prevPage + 1);
+    setItems([]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [year]);
 
@@ -91,7 +95,7 @@ export default function Home({
           <NotFround />
         ) : (
           <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-center gap-5">
-            {items.length == 0
+            {items.length == 0 ?? year !== ""
               ? data.results?.map((film: any) => (
                   <CardMovie
                     urlImage={`https://image.tmdb.org/t/p/w500${film?.poster_path}`}
@@ -104,20 +108,7 @@ export default function Home({
                     saved={undefined}
                   />
                 ))
-              : year !== ""
-              ? items?.map((film: any) => (
-                  <CardMovie
-                    urlImage={`https://image.tmdb.org/t/p/w500${film?.poster_path}`}
-                    title={film?.title}
-                    year={film?.release_date}
-                    rating={film?.vote_average}
-                    id={film?.id}
-                    type={film?.media_type}
-                    key={film?.id}
-                    saved={undefined}
-                  />
-                ))
-              : data.results?.map((film: any) => (
+              : items?.map((film: any) => (
                   <CardMovie
                     urlImage={`https://image.tmdb.org/t/p/w500${film?.poster_path}`}
                     title={film?.title}
