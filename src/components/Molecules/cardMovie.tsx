@@ -41,7 +41,8 @@ const CardMovie = (props: CardPropsType) => {
       {/* image */}
       <div className="flex justify-center" onClick={handleDetail}>
         <Image
-          className="lg:w-full w-60 md:h-[400px] lg:h-96 flex-1 object-cover rounded-xl"
+          className="lg:w-full w-60 md:h-[400px] lg:h-96 flex-1 object-cover rounded-xl transition-opacity opacity-0 duration-[1s]"
+          onLoadingComplete={(image) => image.classList.remove("opacity-0")}
           loader={() => src}
           src={src}
           width={100}

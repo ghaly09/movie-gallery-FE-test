@@ -11,10 +11,7 @@ import NotFround from "../../Atoms/notFround";
 import { useAppDispatch } from "@/src/stores/store";
 import { fetchDataHome } from "@/src/stores/reducers/homeSlice";
 
-export default function Home({
-  headertitle,
-  description,
-}: Partial<headerTitleProps>) {
+function Home({ headertitle, description }: Partial<headerTitleProps>) {
   const dispatch = useAppDispatch();
   const [page, setPage] = React.useState<number>(1);
   const [items, setItems] = React.useState<any[]>([]);
@@ -108,7 +105,7 @@ export default function Home({
                     saved={undefined}
                   />
                 ))
-              : items?.map((film: any) => (
+              : items?.map((film: any, index: number) => (
                   <CardMovie
                     urlImage={`https://image.tmdb.org/t/p/w500${film?.poster_path}`}
                     title={film?.title}
@@ -116,7 +113,7 @@ export default function Home({
                     rating={film?.vote_average}
                     id={film?.id}
                     type={film?.media_type}
-                    key={film?.id}
+                    key={index}
                     saved={undefined}
                   />
                 ))}
@@ -126,3 +123,5 @@ export default function Home({
     </section>
   );
 }
+
+export default React.memo(Home);
